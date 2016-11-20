@@ -11,9 +11,8 @@ int main() {
     }else if ( age < 55 ){
         std::cout << "You know, " << name << ", you should have learned by now that looking at a computer all the time like this will desroy your eyeballs." << std::endl;
     }else{
-        std::cout << "Hello, " << name << "." << std::endl; //i cant think of anything
+        std::cout << "Greetings, Ancient One. Whoops, I mean " << name << "." << std::endl; //i cant think of anything
     }
     
     return 0;
 }
-# C-HW
