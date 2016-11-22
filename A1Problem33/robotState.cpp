@@ -9,7 +9,7 @@ bool robotState::hasPiece() {
     return piece;
 }
 int robotState::getPosition() {
-    return getPosition;
+    return position;
 }
 int robotState::getArmPosition() {
     return armPosition;
@@ -17,22 +17,22 @@ int robotState::getArmPosition() {
 int robotState::getScore() {
     return score;
 }
-void Drive(int distance, int position) {            
-    position += distance;
+void robotState::drive(int distance, robotState robot) {            
+    robot.position += distance;
     std::cout << "Robot is now at position" << position << std::endl;
 }
-void MoveArmT(int position, int armPosition) {
-    armPostition = position
+void robotState::moveArmTo(int position, robotState robot) {
+    robot.armPosition = position;
     std::cout << "Robot arm is now at position" << armPosition << std::endl;
 }
-/*void ScorePiece() {
+void robotState::scorePiece(robotState robot) {
     if (robot.hasPiece() && robot.position == 6 && robot.armPosition == 10) {
         robot.score += 1;
         std::cout << "AYy!! Your robot scored a point!" << std::endl;
     }else{
         std::cout << "Huh? Your robot can't score!" << std::endl;
     }   
-}*/
-void PickUpPiece() {
+}
+void robotState::pickUpPiece() {
            
 }

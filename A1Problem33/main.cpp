@@ -1,4 +1,5 @@
 #include <iostream>
+#include "robotState.h"
 
 int main() {
     robotState robot;
@@ -6,7 +7,7 @@ int main() {
         //just getting the what you want to do
         break;
     }*/
-    Drive(8, robot.position);
+    robot.drive(8, robot);
     return 0;
 }
 

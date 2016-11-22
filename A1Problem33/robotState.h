@@ -1,3 +1,6 @@
+#ifndef ROBOTSTATE_H_
+#define ROBOTSTATE_H_
+
 class robotState {
     private:
         bool piece;
@@ -8,4 +11,9 @@ class robotState {
     int getPosition();
     int getArmPosition();
     int getScore();
+    void drive(int distance, robotState robot);
+    void moveArmTo(int position, robotState robot);
+    void scorePiece(robotState robot);
+    void pickUpPiece();
 };
+#endif
