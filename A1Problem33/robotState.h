@@ -11,9 +11,10 @@ class robotState {
     int getPosition();
     int getArmPosition();
     int getScore();
+    public:
     void drive(int distance, robotState robot);
     void moveArmTo(int position, robotState robot);
     void scorePiece(robotState robot);
-    void pickUpPiece();
+    void pickUpPiece(robotState robot);
 };
 #endif
