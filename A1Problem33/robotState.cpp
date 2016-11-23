@@ -25,7 +25,7 @@ void robotState::drive(int distance, robotState robot) {
 }
 void robotState::moveArmTo(int position, robotState robot) {
     robot.armPosition = position;
-    std::cout << "Robot arm is now at position " << armPosition << std::endl;
+    std::cout << "Robot arm is now at position " << robot.armPosition << std::endl;
 }
 void robotState::scorePiece(robotState robot) {
     if (robot.hasPiece() && robot.position == 6 && robot.armPosition == 10) {

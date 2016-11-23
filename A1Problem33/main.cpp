@@ -9,12 +9,22 @@ int main() {
         std::string choice;
         std::cin >> choice;
         if (choice == "drive") {
-            std::cout << "how far" << std::endl;
+            std::cout << "to where" << std::endl;
             int distance;
             std::cin >> distance;
             robot.drive(distance, robot);
+        }else if (choice == "piece"){
+            robot.pickUpPiece(robot);
+        }else if (choice == "score"){
+            robot.scorePiece(robot);
+        }else if (choice == "mvarm"){
+            std::cout << "to where?" << std::endl;
+            int position;
+            std::cin >> position;
+            robot.moveArmTo(position, robot);
+        }else{
+            std::cout << "what?" << std::endl;
         }
-    break;
     }
     return 0;
 }
