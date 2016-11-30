@@ -12,16 +12,16 @@ int main() {
             std::cout << "to where" << std::endl;
             int distance;
             std::cin >> distance;
-            robot.drive(distance, robot);
+            robot.drive(distance);
         }else if (choice == "piece"){
-            robot.pickUpPiece(robot);
+            robot.pickUpPiece();
         }else if (choice == "score"){
-            robot.scorePiece(robot);
+            robot.scorePiece();
         }else if (choice == "mvarm"){
             std::cout << "to where?" << std::endl;
             int position;
             std::cin >> position;
-            robot.moveArmTo(position, robot);
+            robot.moveArmTo(position);
         }else{
             std::cout << "what?" << std::endl;
         }
