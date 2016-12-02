@@ -1,33 +1,33 @@
 #include <iostream>
 #include "robotState.h"
-namespace robot{    
+namespace robot{
     bool piece = false;
     int position = 0;
     int armPosition = 0;
     int score = 0;
-bool robotState::hasPiece() const{
+bool robot::hasPiece() {
     return piece;
 }
-int robotState::getPosition() const{
+int robot::getPosition() {
     return position;
 }
-int robotState::getArmPosition() const{
+int robot::getArmPosition() {
     return armPosition;
 }   
-int robotState::getScore() const{
+int robot::getScore() {
     return score;
 }
 
 //things that do stuff
-void robotState::drive(int distance) {            
+void robot::drive(int distance) {            
     position += distance;
     std::cout << "Robot is now at position " << position << std::endl;
 }
-void robotState::moveArmTo(int position) {
+void robot::moveArmTo(int position) {
     armPosition += position;
     std::cout << "Robot arm is now at position " << armPosition << std::endl;
 }
-void robotState::scorePiece() {
+void robot::scorePiece() {
     if (hasPiece() && position == 6 && armPosition == 10) {
         score += 1;
         piece = false;
@@ -36,7 +36,7 @@ void robotState::scorePiece() {
         std::cout << "Huh? Your robot can't score!" << std::endl;
     }   
 }
-void robotState::pickUpPiece() {
+void robot::pickUpPiece() {
     if (armPosition == 0 && !hasPiece()){
         piece = true;
         std::cout << "Your robot picked up a game piece." << std::endl;
