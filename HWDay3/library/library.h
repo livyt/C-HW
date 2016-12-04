@@ -20,9 +20,9 @@ class Library{
         std::vector<Patron> patrons;
         std::vector<Book> allBooks;
         
-        void addPatron(std::string);
+        void addPatron(std::string);//
         void checkOutBook(Patron, std::string);//if the book doesn't exist it makes a book lol
         void isBookOverdue(Book);
-        bool doesBookExist(std::string);
+        bool doesBookExist(std::string);//
 };
 #endif

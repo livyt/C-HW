@@ -22,3 +22,11 @@ void Library::checkOutBook(Patron patron, std::string book){
         patron.checkedOutBooks.push_back(newBook);
     }
 }
+bool doesBookExist(std::string search){
+    for (Book i : allBooks) {
+        if (i.title == search) {
+            return true;
+        }
+    }
+    return false;
+}
