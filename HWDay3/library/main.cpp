@@ -34,9 +34,16 @@ int main() {
         std::cout << "time's not up....yet" << std::endl;
       }
     }else if (choice == "searchbooks"){
-
+      std::cout << "What's the title of the book you're lookin for?" << std::endl;
+      std::string search_title;
+      std::cin >> search_title;
+      if(library.doesBookExist(search_title)){
+        std::cout << "Yep, that book exists!!" << std::endl;
+      }else{
+        std::cout << "Aw, that book doesn't exist :( but if you check out a book with that title, we'll find a way to get it to you ;)" << std::endl;
+      }
     }else if (choice == "turnin"){
-        
+       
     }else if (choice == "exit"){
 
     }else{

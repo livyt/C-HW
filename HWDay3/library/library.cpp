@@ -1,9 +1,8 @@
 #include "library.h"
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
-// DATE TIME CHECKED OUT TIME TIME DATE TIME CHECKED OUT FOR DATE CHECKED
-// OUT!!!!!! !!!!
 void Library::addPatron(std::string input_name) {
   Patron patron;
   patron.name_ = input_name;
@@ -48,7 +47,7 @@ bool Library::doesBookExist(std::string search) {
 bool Library::isBookOverdue(Book book) {  // every 3 commands the day is laging
   std::cout << "you gotta enter the current date now." << std::endl;
   Date current_date = inputDate();
-  if (current_date == book.due_date_ || current_date.year_ > book.due_date_.year_ || current_date.month_ > book.due_date_.month_){
+  if (current_date.year_ > book.due_date_.year_ || current_date.month_ > book.due_date_.month_){
     return true;
   }
   return false;
@@ -75,7 +74,21 @@ Library::Date Library::inputDate() {
   return new_date;
 }
 void Library::turnInBook(Patron patron, Book turnin){
-  //////////// 
+  //making sure the book exists, heh
+  bool patronHasBook = false;
+  for (Book i : patron.checked_out_books_){
+    if ( i.title_ == turnin.title_ ){
+      patronHasBook = true;
+      turnin.checked_out_ = false;
+    }
+  }
+  
+  //now finding the book and removin it from patron's checked_out_books_
+  if (patronHasBook){
+  auto to_be_deleted = std::find(patron.checked_out_books_.begin(), patron.checked_out_books_.end(), turnin);
+  patron.checked_out_books_.erase(to_be_deleted);
+  }
+
 }
 Library::Book Library::getBook(std::string book_to_get){
   for (Book i : all_books_){
@@ -100,3 +113,4 @@ Library::Patron Library::getPatron(std::string patron_to_get){
   std::cout << "getPatron failed, try different string?" << std::endl;
   return invalidPatron;
 }
+
