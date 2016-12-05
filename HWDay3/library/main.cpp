@@ -43,11 +43,19 @@ int main() {
         std::cout << "Aw, that book doesn't exist :( but if you check out a book with that title, we'll find a way to get it to you ;)" << std::endl;
       }
     }else if (choice == "turnin"){
-       
+      std::cout << "what patron is turning this stuff in?" << std::endl;
+      std::string turnin_patron;
+      std::cin >> turnin_patron;
+      std::cout << "what book are they turning in?" << std::endl;
+      std::string book_turnin;
+      std::cin >> book_turnin;
+      library.turnInBook(library.getPatron(turnin_patron), library.getBook(book_turnin));
+      std::cout << "Kudos!" << std::endl;
     }else if (choice == "exit"){
-
+      std::cout << "why do you want to leave the library?? Are you implying that my booklending services are subpar?! Not all of us can afford to poodle around doing whatever we feel like! Some us have to work, you know!!" << std::endl;
+      break;
     }else{
-
+      std::cout << "What??" << std::endl;
     }
   }
   return 0; 

@@ -32,6 +32,8 @@ void Library::checkOutBook(Patron patron, std::string book) {
     newBook.title_ = book;
     newBook.date_checked_out_ = bookDate;
     newBook.due_date_ = bookDueDate;
+    newBook.checked_out_ = true;
+    all_books_.push_back(newBook); //0ops forgot
     patron.checked_out_books_.push_back(newBook);
   }
 }

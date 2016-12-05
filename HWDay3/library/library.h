@@ -18,6 +18,8 @@ class Library {
     Date date_checked_out_;
     Date due_date_;
     bool checked_out_;
+    int number_;
+    bool operator==(const Book &what) const { return what.number_== number_; }
 
    private:
     int checked_out_for_;  // how long it's been checked out for
@@ -31,6 +33,7 @@ class Library {
 
   std::vector<Patron> patrons_;
   std::vector<Book> all_books_;
+  
 
   Date inputDate(); //
   void addPatron(std::string);  //
