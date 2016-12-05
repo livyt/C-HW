@@ -17,9 +17,9 @@ class Library {
     std::string title_;
     Date date_checked_out_;
     Date due_date_;
+    bool checked_out_;
 
    private:
-    bool checked_out_;
     int checked_out_for_;  // how long it's been checked out for
   };
 
@@ -38,5 +38,8 @@ class Library {
       Patron, std::string);  // if the book doesn't exist it makes a book lol
   bool isBookOverdue(Book); //
   bool doesBookExist(std::string);  //
+  void turnInBook(Patron, Book);
+  Book getBook(std::string);
+  Patron getPatron(std::string);
 };
 #endif  // LIBRARY_H_
