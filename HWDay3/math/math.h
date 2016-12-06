@@ -1,15 +1,14 @@
 #ifndef MATH_H_
 #define MATH_H_
-#include <array>
+#include <vector>
 
-namespace mmath{
+//namespace mmath{
+std::vector<double> cap_array(std::vector<double>, double, double);
+std::vector<double> difference(std::vector<double>, std::vector<double>);
+double median_machine(std::vector<double>);
 double cap_double(double, double, double);
-//double * cap_array(double arr[], double, double);
-//void cap_array(double* arr[], double, double);
-//double avg_array(double arr[]);
+double avg_array(std::vector<double>);
+double mode(std::vector<double>);
 bool sign(double);
-//double median_machine(double arr[]);
-//double mode(double arr[]);
-//std::array[] difference(double arr1[], double arr2[]);
-}
+//}
 #endif //MATH_H_
