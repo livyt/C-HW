@@ -9,3 +9,9 @@ cc_binary(
   srcs = ["main.cpp"],
   deps = [":mmath"]
 )
+
+cc_test(
+  name = "mathtest",
+  srcs = ["mathtests.cpp"],
+  deps = [":mmath", "//third_party/google/googletest:googletest"]
+)

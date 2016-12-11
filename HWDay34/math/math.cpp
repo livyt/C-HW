@@ -2,8 +2,9 @@
 #include <vector>
 #include "math.h"
 #include <algorithm>
+#include <numeric>
 
-std::vector<double> mmath::cap_array(std::vector<double> input, double min, double max){
+std::vector<double> mmath::CapArray(std::vector<double> input, double min, double max){
     std::vector<double> output;
   for (double i : input) {
     if (i < min) {
@@ -17,7 +18,7 @@ std::vector<double> mmath::cap_array(std::vector<double> input, double min, doub
   return output;
 }
 
-std::vector<double> mmath::difference(std::vector<double> input1, std::vector<double> input2){
+std::vector<double> mmath::Difference(std::vector<double> input1, std::vector<double> input2){
   std::vector<double> output = input1;
   int j = 0;
   for (double i : input2) {
@@ -27,7 +28,7 @@ std::vector<double> mmath::difference(std::vector<double> input1, std::vector<do
   return output;
 }
 
-double mmath::median_machine(std::vector<double> input){
+double mmath::MedianMachine(std::vector<double> input){
   std::sort(std::begin(input), std::end(input));
   if (input.size() % 2 != 0) {
     return input[(input.size() - 1) / 2];
@@ -42,7 +43,7 @@ double mmath::median_machine(std::vector<double> input){
   }
 }
 
-double mmath::cap_double(double input, double min, double max){
+double mmath::CapDouble(double input, double min, double max){
   if (input < min) {
     return min;
   }else if (input > max) {
@@ -52,16 +53,17 @@ double mmath::cap_double(double input, double min, double max){
   }
 }
 
-double mmath::avg_array(std::vector<double> input){
-  double output = 0;
+double mmath::AvgArray(std::vector<double> input){
+  /*double output = 0;
   for (double i : input) {
     output += i;
-  }
+  }*/
+  double output = std::accumulate(input.begin(), input.end(), 0.0);
   output /= input.size();
   return output;
 }
 
-double mmath::mode(std::vector<double> input){
+double mmath::Mode(std::vector<double> input){
   std::sort(std::begin(input), std::end(input));
   //1, 5, 8, 8, 9, 43
   int counter = 1; //counter of how many times a number repeats
@@ -81,6 +83,6 @@ double mmath::mode(std::vector<double> input){
   return mode;
 }
 
-bool mmath::sign(double input){ //true=positive false=negative
+bool mmath::Sign(double input){ //true=positive false=negative
  return (!(input < 0));
 }
