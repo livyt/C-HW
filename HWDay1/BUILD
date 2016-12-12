@@ -11,5 +11,8 @@ cc_library(
 )
 
 cc_test(
-
+  name = 'robotTest',
+  srcs = ['robotTest.cpp'],
+  deps = ['//third_party/google/googletest:googletest', ':robotState']
 )
+

@@ -1,7 +1,7 @@
 #include <iostream>
 #include "robotState.h"
 int main() {
-  robot::robotState robot;
+  /*robot::robotState robot;
   while (true) {
     // just getting the what you want to do
     std::cout << "Whatcha wanna do " << std::endl;
@@ -24,6 +24,6 @@ int main() {
     } else {
       std::cout << "what?" << std::endl;
     }
-  }
+  }*/
   return 0;
 }
