@@ -3,25 +3,25 @@
 #include <vector>
 #include <algorithm>
 
-void Library::addPatron(std::string input_name) {
+void Library::AddPatron(std::string input_name) {
   Patron patron;
   patron.name_ = input_name;
-  patrons_.push_back(patron);  // patrons is that vector of you-know-whats
+  patrons_.push_back(patron); // patrons is that vector of you-know-whats
 }
-void Library::checkOutBook(Patron patron, std::string book) {
+void Library::CheckOutBook(Patron patron, std::string book) {
   bool checkedOut = false;
-  Date bookDate = inputDate();
+  Date bookDate = InputDate();
   Date bookDueDate;
   bookDueDate.month_ = bookDate.month_ + 1;
 
   for (Book i : all_books_) {
-    if (doesBookExist(i.title_)) {
-      if (i.checked_out_ == false){
+    if (DoesBookExist(i.title_)) {
+      if (i.checked_out_ == false) {
         i.date_checked_out_ = bookDate;
         i.due_date_ = bookDueDate;
         patron.checked_out_books_.push_back(i);
         checkedOut = true;
-      }else{
+      } else {
         std::cout << "that book's checked out already, sorry :(" << std::endl;
         checkedOut = true;
       }
@@ -33,12 +33,12 @@ void Library::checkOutBook(Patron patron, std::string book) {
     newBook.date_checked_out_ = bookDate;
     newBook.due_date_ = bookDueDate;
     newBook.checked_out_ = true;
-    all_books_.push_back(newBook); //0ops forgot
+    all_books_.push_back(newBook); // 0ops forgot
     patron.checked_out_books_.push_back(newBook);
   }
 }
 
-bool Library::doesBookExist(std::string search) {
+bool Library::DoesBookExist(std::string search) {
   for (Book i : all_books_) {
     if (i.title_ == search) {
       return true;
@@ -46,16 +46,17 @@ bool Library::doesBookExist(std::string search) {
   }
   return false;
 }
-bool Library::isBookOverdue(Book book) {  // every 3 commands the day is laging
+bool Library::IsBookOverdue(Book book) { // every 3 commands the day is laging
   std::cout << "you gotta enter the current date now." << std::endl;
-  Date current_date = inputDate();
-  if (current_date.year_ > book.due_date_.year_ || current_date.month_ > book.due_date_.month_){
+  Date current_date = InputDate();
+  if (current_date.year_ > book.due_date_.year_ ||
+      current_date.month_ > book.due_date_.month_) {
     return true;
   }
   return false;
 }
 
-Library::Date Library::inputDate() {
+Library::Date Library::InputDate() {
   int day;
   int month;
   int year;
@@ -75,26 +76,26 @@ Library::Date Library::inputDate() {
 
   return new_date;
 }
-void Library::turnInBook(Patron patron, Book turnin){
-  //making sure the book exists, heh
+void Library::TurnInBook(Patron patron, Book turnin) {
+  // making sure the book exists, heh
   bool patronHasBook = false;
-  for (Book i : patron.checked_out_books_){
-    if ( i.title_ == turnin.title_ ){
+  for (Book i : patron.checked_out_books_) {
+    if (i.title_ == turnin.title_) {
       patronHasBook = true;
       turnin.checked_out_ = false;
     }
   }
-  
-  //now finding the book and removin it from patron's checked_out_books_
-  if (patronHasBook){
-  auto to_be_deleted = std::find(patron.checked_out_books_.begin(), patron.checked_out_books_.end(), turnin);
-  patron.checked_out_books_.erase(to_be_deleted);
-  }
 
+  // now finding the book and removin it from patron's checked_out_books_
+  if (patronHasBook) {
+    auto to_be_deleted = std::find(patron.checked_out_books_.begin(),
+                                   patron.checked_out_books_.end(), turnin);
+    patron.checked_out_books_.erase(to_be_deleted);
+  }
 }
-Library::Book Library::getBook(std::string book_to_get){
-  for (Book i : all_books_){
-    if(book_to_get == i.title_){
+Library::Book Library::get_book(std::string book_to_get) {
+  for (Book i : all_books_) {
+    if (book_to_get == i.title_) {
       return i;
     }
   }
@@ -104,9 +105,9 @@ Library::Book Library::getBook(std::string book_to_get){
   return invalidBook;
 }
 
-Library::Patron Library::getPatron(std::string patron_to_get){
-  for (Patron i : patrons_){
-    if (i.name_ == patron_to_get){
+Library::Patron Library::get_patron(std::string patron_to_get) {
+  for (Patron i : patrons_) {
+    if (i.name_ == patron_to_get) {
       return i;
     }
   }
@@ -115,4 +116,3 @@ Library::Patron Library::getPatron(std::string patron_to_get){
   std::cout << "getPatron failed, try different string?" << std::endl;
   return invalidPatron;
 }
-

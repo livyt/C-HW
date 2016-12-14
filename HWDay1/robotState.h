@@ -1,22 +1,22 @@
 #ifndef ROBOTSTATE_H_
 #define ROBOTSTATE_H_
 namespace robot {
-class robotState {
+class RobotState {
 private:
-  bool piece = false;
-  int position = 0;
-  int armPosition = 0;
-  int score = 0;
+  bool piece_ = false;
+  int position_ = 0;
+  int arm_position_ = 0;
+  int score_ = 0;
 
 public:
-  bool hasPiece() const; //
-  int getPosition() const; //
-  int getArmPosition() const; //
-  int getScore() const; //
-  void drive(int distance); //
-  void moveArmTo(int position); //
-  void scorePiece(); //
-  void pickUpPiece(); //
+  bool has_piece() const; //
+  int get_position() const; //
+  int get_arm_position() const; //
+  int get_score() const; //
+  void Drive(int distance); //
+  void MoveArmTo(int position); //
+  void ScorePiece(); //
+  void PickUpPiece(); //
 };
 }
 #endif
