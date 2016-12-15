@@ -10,15 +10,21 @@ void Library::AddPatron(std::string input_name) {
 }
 void Library::CheckOutBook(Patron patron, std::string book) {
   bool checkedOut = false;
-  Date bookDate = InputDate();
-  Date bookDueDate;
-  bookDueDate.month_ = bookDate.month_ + 1;
+  Date book_date = InputDate();
+  Date book_due_date;
+  //okay. if someone checks out in december the due date has to be jan.
+  if(book_date.month_ = 12){
+    book_due_date.month_ = 1;
+    book_due_date.year_ = book_date.year_ + 1;
+  }else{
+    book_due_date.month_ = book_date.month_ + 1;
+  }
 
   for (Book i : all_books_) {
     if (DoesBookExist(i.title_)) {
       if (i.checked_out_ == false) {
-        i.date_checked_out_ = bookDate;
-        i.due_date_ = bookDueDate;
+        i.date_checked_out_ = book_date;
+        i.due_date_ = book_due_date;
         patron.checked_out_books_.push_back(i);
         checkedOut = true;
       } else {
@@ -30,8 +36,8 @@ void Library::CheckOutBook(Patron patron, std::string book) {
   if (!checkedOut) {
     Book newBook;
     newBook.title_ = book;
-    newBook.date_checked_out_ = bookDate;
-    newBook.due_date_ = bookDueDate;
+    newBook.date_checked_out_ = book_date;
+    newBook.due_date_ = book_due_date;
     newBook.checked_out_ = true;
     all_books_.push_back(newBook); // 0ops forgot
     patron.checked_out_books_.push_back(newBook);
@@ -56,25 +62,42 @@ bool Library::IsBookOverdue(Book book) { // every 3 commands the day is laging
   return false;
 }
 
-Library::Date Library::InputDate() {
+//std::tuple<int, int, int> Library::InputDate() {
+Library::Date Library::InputDate() {  
   int day;
   int month;
-  int year;
-  Date new_date;
-
-  std::cout << "hey. day. in a number like 2" << std::endl;
-  std::cin >> day;
-  new_date.day_ = day;
-
-  std::cout << "moth, as a number. like 5 for may" << std::endl;
-  std::cin >> month;
-  new_date.month_ = month;
-
-  std::cout << "year??" << std::endl;
-  std::cin >> year;
-  new_date.year_ = year;
-
-  return new_date;
+  int year; 
+  
+  while( true ){
+    std::cout << "hey. day. in a number like 2" << std::endl;
+    std::cin >> day;
+    if (!(day > 31 || day < 1)){
+      break;
+    }
+    std::cout << "that's not a day of the month." << std::endl;
+  }
+  while( true ){
+    std::cout << "moth, as a number. like 5 for may" << std::endl;
+    std::cin >> month;
+    if(!(month > 12 || month < 1)){
+      break;
+    }
+    std::cout << "go look at a calendar" << std::endl;
+  }
+  while( true ){
+    std::cout << "year??" << std::endl;
+    std::cin >> year;
+    if(!(year < 2016)){
+      break;
+    }
+    std::cout << "dude. it's 2016." << std::endl;
+  }
+  //return std::make_tuple(day, month, year);
+  Date output;
+  output.day_ = day;
+  output.month_ = month;
+  output.year_ = year;
+  return output;
 }
 void Library::TurnInBook(Patron patron, Book turnin) {
   // making sure the book exists, heh

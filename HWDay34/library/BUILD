@@ -9,3 +9,7 @@ cc_binary(
   srcs = ["main.cpp"],
   deps = [":library"]
 )
+
+cc_test(
+  
+)

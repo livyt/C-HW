@@ -5,7 +5,7 @@
 
 class Library {
 public:
-  class Date {
+  struct Date {
   public:
     int day_;
     int month_;
@@ -34,7 +34,9 @@ public:
   std::vector<Patron> patrons_;
   std::vector<Book> all_books_;
 
-  Date InputDate();            //
+  //std::tuple<int, int, int> InputDate();            //
+  Date InputDate();
+  //Date CreateDate(std::tuple<int, int, int>);
   void AddPatron(std::string); //
   void CheckOutBook(
       Patron, std::string); // if the book doesn't exist it makes a book lol
